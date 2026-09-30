@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Intelligent KYB Intake - Lite MVP</title>
+<style>
+body{font-family:system-ui,-apple-system,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;background:#f7f7f8;color:#1f2328}
+.card{background:#fff;border:1px solid #d8dee4;border-radius:12px;padding:22px;margin:18px 0}
+h1{margin-bottom:6px}.muted{color:#6a737d}
+label{display:block;margin:12px 0 6px;font-weight:600}
+input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #bbb;border-radius:8px}
+button{margin-top:18px;padding:11px 16px;border:0;border-radius:8px;background:#111;color:#fff;cursor:pointer}
+pre{white-space:pre-wrap;background:#1f2328;color:#fff;padding:18px;border-radius:8px}
+</style>
+</head>
+<body>
+<h1>Intelligent KYB Intake</h1>
+<div class="muted">Lite MVP tester: email + attachments → checklist → Slack notification</div>
+<div class="card">
+<form id="f">
+<label>Merchant</label><input name="merchant_name" value="Manila Home Supplies Inc." required>
+<label>Email subject</label><input name="email_subject" value="KYB documents">
+<label>Attachments</label><input name="files" type="file" multiple>
+<button>Analyze submission</button>
+</form>
+</div>
+<div class="card">
+<h2>Result</h2>
+<pre id="out">Submit a merchant email to begin.</pre>
+</div>
+<script>
+document.getElementById("f").addEventListener("submit", async (e)=>{
+ e.preventDefault();
+ const data=new FormData(e.target);
+ const r=await fetch("/analyze",{method:"POST",body:data});
+ document.getElementById("out").textContent=JSON.stringify(await r.json(),null,2);
+});
+</script>
+</body>
+</html>
