@@ -1,0 +1,10 @@
+version: PH_CORPORATION_V1
+country: PH
+entity_types:
+  PH_CORPORATION:
+    requirements:
+      - {id: R-SEC-001, label: SEC Certificate of Registration, document_type: SEC_CERTIFICATE}
+      - {id: R-AOI-001, label: Articles of Incorporation, document_type: ARTICLES_OF_INCORPORATION}
+      - {id: R-BIR-001, label: BIR Certificate of Registration / Form 2303, document_type: BIR_2303}
+      - {id: R-BANK-001, label: Bank Certificate, document_type: BANK_CERTIFICATE}
+      - {id: R-ID-001, label: Authorized Representative ID, document_type: AUTHORIZED_REP_ID}
